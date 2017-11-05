@@ -243,10 +243,10 @@
                                                 <h4 class="fa fa-globe" aria-hidden="true"></h4><br/>Global
                                             </a>
                                             <a href="#" class="list-group-item text-center">
-                                                <h4 class="fa fa-cogs" aria-hidden="true"></h4><br/>Settings
+                                                <h4 class="fa fa-archive" aria-hidden="true"></h4><br/>Sections
                                             </a>
                                             <a href="#" class="list-group-item text-center">
-                                                <h4 class="fa fa-archive"></h4><br/>Sections
+                                                <h4 class="fa fa-cogs"></h4><br/>Settings
                                             </a>
                                             <a href="#" id="panel-list" class="list-group-item text-center">
                                                 <h4 class="fa fa-columns"></h4><br/>Panel
@@ -383,11 +383,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
+            function chech_panel() {
+                $('#add_panel').prop("checked", true).trigger("change");
+            }
             $('#panel-list').hide();
             var text_domain = "textdomain";
+            var panel_id = "panel-id";
+            var panel_priority = 10;
+            var panel_capability = "edit_theme_options";
+            var panel_title = "panel title";
+            var panel_description = "panel description";
             $('input#text_domain').on('change', function() {
                 text_domain = $('input#text_domain').val();
-                $('#add_panel').prop("checked", true).trigger("change");
+                chech_panel();
             });
             $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
                 e.preventDefault();
@@ -397,21 +405,39 @@
                 $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
                 $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
             });
+            $('#panel-list input[type=text]').change(function() {
+                panel_id = $('#panel_id').val() || "panel-id";
+                panel_priority = $('input#panel_priority').val() || 10;
+                panel_capability = $('input#panel_capability').val() || "edit_theme_options";
+                panel_title = $('input#panel_title').val() || "panel title";
+                panel_description = $('#panel_description').val() || "panel description";
+                add_panel = "\t$wp_customize->add_panel( \n\t\t'" + panel_id + "',\n \t\tarray(\n\
+\t\t\t'priority' => " + panel_priority + ",\n\
+\t\t\t'capability' => '" + panel_capability + "',\n\
+\t\t\t'theme_supports' => '',\n\
+\t\t\t'title' => __( '" + panel_title + "', '" + text_domain + "' ),\n\
+\t\t\t'description' => __( '" + panel_description + "', '" + text_domain + "' ),\n\
+\t\t)\n\
+\t);\n\
+";
+                section_add_panel = ",\n\t\t\t'panel' => '" + panel_id + "'";
+                chech_panel();
+            });
             var add_panel = "";
             var section_add_panel = "";
             $('#add_panel').on('change', function() {
                 if ($('#add_panel:checkbox:checked').length > 0) {
                     $('#panel-list').show();
-                    add_panel = "\t$wp_customize->add_panel( \n\t\t'panel_id',\n \t\tarray(\n\
-\t\t\t'priority' => 10,\n\
-\t\t\t'capability' => 'edit_theme_options',\n\
+                    add_panel = "\t$wp_customize->add_panel( \n\t\t'" + panel_id + "',\n \t\tarray(\n\
+\t\t\t'priority' => " + panel_priority + ",\n\
+\t\t\t'capability' => '" + panel_capability + "',\n\
 \t\t\t'theme_supports' => '',\n\
-\t\t\t'title' => __( 'Example Panel', '" + text_domain + "' ),\n\
-\t\t\t'description' => __( 'Description of what this panel does.', '" + text_domain + "' ),\n\
+\t\t\t'title' => __( '" + panel_title + "', '" + text_domain + "' ),\n\
+\t\t\t'description' => __( '" + panel_description + "', '" + text_domain + "' ),\n\
 \t\t)\n\
 \t);\n\
 ";
-                    section_add_panel = ",\n\t\t\t'panel' => ''";
+                    section_add_panel = ",\n\t\t\t'panel' => '" + panel_id + "'";
                 } else {
                     add_panel = "";
                     section_add_panel = "";
