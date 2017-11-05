@@ -105,7 +105,7 @@
         div.bhoechie-tab-container {
             z-index: 10;
             background-color: #ffffff;
-            padding: 0 !important;
+            padding: 0 0 60px 0!important;
             border-radius: 4px;
             -moz-border-radius: 4px;
             border: 1px solid #ddd;
@@ -117,6 +117,12 @@
             background-clip: padding-box;
             opacity: 0.97;
             filter: alpha(opacity=97);
+        }
+        
+        .update-button {
+            bottom: 0;
+            position: absolute;
+            margin-bottom: 20px;
         }
         
         div.bhoechie-tab-menu {
@@ -191,6 +197,33 @@
             min-width: 200px;
             display: block;
         }
+        
+        input#textInput {
+            width: 40px;
+            border-radius: 3px;
+            border: 2px solid lightgrey;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 34px;
+        }
+        
+        .form-inline {
+            margin-bottom: 15px;
+            margin-left: -5px;
+        }
+        
+        .form-inline label {
+            justify-content: flex-start;
+            max-width: 80px !important;
+            display: inline-block;
+            padding-left: 21px;
+        }
+        
+        .form-inline input[type=checkbox] {
+            margin-top: -2px;
+            display: block;
+        }
     </style>
 </head>
 
@@ -207,10 +240,16 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item active text-center">
+                                                <h4 class="fa fa-globe" aria-hidden="true"></h4><br/>Global
+                                            </a>
+                                            <a href="#" class="list-group-item text-center">
                                                 <h4 class="fa fa-cogs" aria-hidden="true"></h4><br/>Settings
                                             </a>
                                             <a href="#" class="list-group-item text-center">
                                                 <h4 class="fa fa-archive"></h4><br/>Sections
+                                            </a>
+                                            <a href="#" id="panel-list" class="list-group-item text-center">
+                                                <h4 class="fa fa-columns"></h4><br/>Panel
                                             </a>
                                         </div>
                                     </div>
@@ -222,41 +261,19 @@
                                                     <div class="form-group">
                                                         <label for="concept" class="col-sm-3 control-label">Function Name</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="concept" name="concept">
+                                                            <input type="text" class="form-control" id="function_name" name="concept">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="description" class="col-sm-3 control-label">Description</label>
+                                                    <div class="form-inline">
+                                                        <label for="amount" class="col-sm-3 control-label">Panel</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="description" name="description">
+                                                            <input type="checkbox" class="form-control" id="add_panel" name="amount">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="amount" class="col-sm-3 control-label">Amount</label>
+                                                        <label for="text_domain" class="col-sm-3 control-label">Text domain</label>
                                                         <div class="col-sm-9">
-                                                            <input type="number" class="form-control" id="amount" name="amount">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="status" class="col-sm-3 control-label">Status</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" id="status" name="status">
-                                                                        <option>Paid</option>
-                                                                        <option>Unpaid</option>
-                                                                    </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="date" class="col-sm-3 control-label">Date</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="date" class="form-control" id="date" name="date">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12 text-right">
-                                                            <button type="button" class="btn btn-default preview-add-button">
-                                                                        <span class="glyphicon glyphicon-plus"></span> Add
-                                                                    </button>
+                                                            <input type="text" class="form-control" id="text_domain" name="text_domain">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -264,12 +281,73 @@
                                         </div>
                                         <!-- train section -->
                                         <div class="bhoechie-tab-content">
-                                            <div>
-                                                <h1 class="glyphicon glyphicon-road" style="font-size:12em;color:#55518a"></h1>
-                                                <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                                                <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">ID</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="section_id" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Title</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="section_title" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Title</label>
+                                                <div class="col-sm-9">
+                                                    <input type="range" class="form-control" id="section_priority" name="description" onchange="updateTextInput(this.value);" value='10'>
+                                                    <input type="text" id="textInput" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Description</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="section_description" name="description">
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="bhoechie-tab-content">
+                                            3
+                                        </div>
+                                        <div class="bhoechie-tab-content" id="panel-list">
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">ID</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="panel_id" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Priority</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="panel_priority" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Capability</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="panel_capability" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Title</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="panel_title" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description" class="col-sm-3 control-label">Description</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="panel_description" name="description">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 text-center update-button">
+                                        <button type="button" class="btn btn-default preview-add-button" id="add_customizer">
+                                                        <span class="glyphicon glyphicon-plus"></span> Update Code
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -294,18 +372,63 @@
             path: "ace/mode/php",
             inline: true
         });
-        //editor.$blockScrolling = Infinity;
-        var function_name = "register_setting"
-        var settings_id = "example_section_one";
-        var settings_title = "Example Settings";
-        var settings_priority = "10";
-        var settings_description = "This is a settings section.";
-        var settings_active_callback = "";
+        editor.$blockScrolling = Infinity;
+        var settings_active_callback = "is_front_page";
         var settings_capability = "";
-        var settings_args = "\n\t\tarray(\n\t\t\t'title' => '" + settings_title + "', \n\t\t\t'priority' => '" + settings_priority + "',\n\t\t\t'capability' => 'edit_theme_options',\n\t\t\t'description' => '" + settings_description + "', \n\t\t\t'active_callback' => '" + settings_active_callback + "'\n\t\t)";
-        var setiings_code = "function " + function_name + "($wp_customize){\n\
+        editor.getSession().selection.clearSelection();
+        editor.getSession().setUseWrapMode(true);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#panel-list').hide();
+            var text_domain = "textdomain";
+            $('input#text_domain').on('change', function() {
+                text_domain = $('input#text_domain').val();
+                $('#add_panel').prop("checked", true).trigger("change");
+            });
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+            var add_panel = "";
+            var section_add_panel = "";
+            $('#add_panel').on('change', function() {
+                if ($('#add_panel:checkbox:checked').length > 0) {
+                    $('#panel-list').show();
+                    add_panel = "\t$wp_customize->add_panel( \n\t\t'panel_id',\n \t\tarray(\n\
+\t\t\t'priority' => 10,\n\
+\t\t\t'capability' => 'edit_theme_options',\n\
+\t\t\t'theme_supports' => '',\n\
+\t\t\t'title' => __( 'Example Panel', '" + text_domain + "' ),\n\
+\t\t\t'description' => __( 'Description of what this panel does.', '" + text_domain + "' ),\n\
+\t\t)\n\
+\t);\n\
+";
+                    section_add_panel = ",\n\t\t\t'panel' => ''";
+                } else {
+                    add_panel = "";
+                    section_add_panel = "";
+                    $('#panel-list').hide();
+                }
+            });
+            $('button#add_customizer').click(function(e) {
+                var function_name = $('#function_name').val() || "register_customizer";
+                var sections_id = $('#section_id').val() || "section_id";
+                var sections_title = $('#section_title').val() || "Section Title";
+                var sections_priority = $('#section_priority').val() || "10";
+                var sections_description = $('#section_description').val() || "This is a section Desctiption.";
+                var sections_args = "\n\t\tarray(\n\t\t\t'title' => __('" + sections_title + "','" + text_domain + "'), \n\t\t\t'priority' => " + sections_priority + ",\n\t\t\t'capability' => 'edit_theme_options',\n\t\t\t'description' => __('" + sections_description + "','" + text_domain + "'), \n\t\t\t'active_callback ' => '" + settings_active_callback + "'" + section_add_panel + "\n\t\t)";
+                var setiings_code = "function " + function_name + "($wp_customize){\n\
 \t//1. Define a new section (if desired) to the Theme Customizer\n\
-\t$wp_customize->add_section(\n\t\t'" + settings_id + "'," + settings_args + "\n\t);\n\
+" + add_panel + "\
+\t$wp_customize->add_section(\n\t\t'" + sections_id + "'," + sections_args + "\n\t);\n\
 \t$wp_customize->add_setting(\n\
 \t\t'copyright_textbox',\n\
 \t\tarray(\n\
@@ -316,30 +439,19 @@
 \t\t'copyright_textbox',\n\
 \t\tarray(\n\
 \t\t\t'label' => 'Copyright text',\n\
-\t\t\t'section' => 'example_section_one',\n\
+\t\t\t'section' => '" + sections_id + "',\n\
 \t\t\t'type' => 'text',\n\
 \t\t)\n\
 \t);\n\
 }\n\
 add_action( 'customize_register', '" + function_name + "' );";
-        editor.setValue(setiings_code);
-        editor.getSession().selection.clearSelection();
-        editor.getSession().setUseWrapMode(true);
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
-                e.preventDefault();
-                $(this).siblings('a.active').removeClass("active");
-                $(this).addClass("active");
-                var index = $(this).index();
-                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+                editor.setValue(setiings_code);
             });
         });
+
+        function updateTextInput(val) {
+            document.getElementById('textInput').value = val;
+        }
     </script>
 </body>
 
