@@ -350,12 +350,7 @@
                                                     <input type="text" id="prioritytextInput" value="">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="description" class="col-sm-3 control-label">Capability</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="panel_capability" name="description">
-                                                </div>
-                                            </div>
+
                                             <div class="form-group">
                                                 <label for="description" class="col-sm-3 control-label">Title</label>
                                                 <div class="col-sm-9">
@@ -401,7 +396,7 @@
         });
         editor.$blockScrolling = Infinity;
         var settings_active_callback = "is_front_page";
-        var settings_capability = "";
+        var settings_capability = "edit_theme_options";
         editor.getSession().selection.clearSelection();
         editor.getSession().setUseWrapMode(true);
     </script>
@@ -435,7 +430,7 @@
             $('#panel-list input[type=text],#panel-list input[type=range]').change(function() {
                 panel_id = $('#panel_id').val() || "panel-id";
                 panel_priority = $('#panel_priority').val() || 10;
-                panel_capability = $('input#panel_capability').val() || "edit_theme_options";
+                panel_capability = "edit_theme_options";
                 panel_title = $('input#panel_title').val() || "panel title";
                 panel_description = $('#panel_description').val() || "panel description";
                 add_panel = "\t$wp_customize->add_panel( \n\t\t'" + panel_id + "',\n \t\tarray(\n\
