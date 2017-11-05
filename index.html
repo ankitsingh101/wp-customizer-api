@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js?ver=1"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .single-code {
+            position: fixed;
+            display: block;
+            overflow: hidden;
+            width: 700px;
+            height: 100%;
+            height: calc(100vh);
+            right: 0;
+            top: 0;
+            padding-top: 30px;
+            z-index: 9999;
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, .6);
+        }
+        
+        .single-code a.clipboard {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+        
+        a.clipboard {
+            text-align: center;
+            display: block;
+            padding: 6px;
+            background-color: #40407d;
+            color: #fff;
+        }
+        
+        div#editor {
+            margin-top: 28px;
+        }
+        
+        a.clipboard i {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        
+        #page {
+            position: relative;
+            overflow: hidden;
+            background-color: #eee;
+            -webkit-transition: .7s all cubic-bezier(0.075, .82, .165, 1);
+            transition: .7s all cubic-bezier(0.075, .82, .165, 1);
+            opacity: 1;
+            z-index: 99;
+        }
+        
+        .tool {
+            position: relative;
+            margin-top: 50px;
+            margin-right: 700px;
+            z-index: 99;
+        }
+        
+        .pageinner {
+            position: relative;
+            min-height: 600px;
+        }
+        
+        .containern,
+        .container {
+            position: relative;
+            height: 100%;
+            max-width: 1000px;
+            width: 100%;
+            padding-left: 35px;
+            padding-right: 35px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tool .single-content {
+            margin: 40px 0;
+        }
+        
+        .single-form {
+            margin-bottom: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page" class="hfeed site">
+        <div class="tool">
+            <div class="pageinner">
+                <div class="containern">
+                    <div class="single-content">
+                        <div class="single-form"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-code">
+            <a class="clipboard" title="Copy code to clipboard" href="#">
+                <i class="material-icons">content_copy</i> Copy generated code to clipboard
+            </a>
+            <div id="editor">
+            </div>
+        </div>
+    </div>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode({
+            path: "ace/mode/php",
+            inline: true
+        });
+        //editor.$blockScrolling = Infinity;
+        var function_name = "register_setting"
+        var settings_id = "example_section_one";
+        var settings_title = "Example Settings";
+        var settings_priority = "10";
+        var settings_description = "This is a settings section.";
+        var settings_active_callback = "";
+        var settings_capability = "";
+        var settings_args = "\n\t\tarray(\n\t\t\t'title' => '" + settings_title + "', \n\t\t\t'priority' => '" + settings_priority + "',\n\t\t\t'capability' => 'edit_theme_options',\n\t\t\t'description' => '" + settings_description + "', \n\t\t\t'active_callback' => '" + settings_active_callback + "'\n\t\t)";
+        var setiings_code = "function " + function_name + "($wp_customize){\n\
+\t//1. Define a new section (if desired) to the Theme Customizer\n\
+\t$wp_customize->add_section(\n\t\t'" + settings_id + "'," + settings_args + "\n\t);\n\
+\t$wp_customize->add_setting(\n\
+\t\t'copyright_textbox',\n\
+\t\tarray(\n\
+\t\t\t'default' => 'Default copyright text',\n\
+\t\t)\n\
+\t);\n\
+\t$wp_customize->add_control(\n\
+\t\t'copyright_textbox',\n\
+\t\tarray(\n\
+\t\t\t'label' => 'Copyright text',\n\
+\t\t\t'section' => 'example_section_one',\n\
+\t\t\t'type' => 'text',\n\
+\t\t)\n\
+\t);\n\
+}\n\
+add_action( 'customize_register', '" + function_name + "' );";
+        editor.setValue(setiings_code);
+        editor.getSession().selection.clearSelection();
+        editor.getSession().setUseWrapMode(true);
+    </script>
+</body>
+
+</html>
