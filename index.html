@@ -47,7 +47,7 @@
             text-align: center;
             display: block;
             padding: 6px;
-            background-color: #40407d;
+            background-color: #81a5c7;
             color: #fff;
         }
         
@@ -155,11 +155,13 @@
         }
         
         div.bhoechie-tab-menu div.list-group>a.active,
-        div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
         div.bhoechie-tab-menu div.list-group>a.active .fa {
-            background-color: #5A55A3;
-            background-image: #5A55A3;
+            background-color: #98bc76;
             color: #ffffff;
+        }
+        
+        .list-group-item.active {
+            border-color: #98bc76;
         }
         
         div.bhoechie-tab-menu {
@@ -179,7 +181,7 @@
             border-left: 0;
             border-bottom: 13px solid transparent;
             border-top: 13px solid transparent;
-            border-left: 10px solid #5A55A3;
+            border-left: 10px solid #98bc76;
         }
         
         div.bhoechie-tab-content {
@@ -234,11 +236,25 @@
             margin-top: -2px;
             display: block;
         }
+        
+        .tool-header {
+            background: #81a5c7;
+            position: absolute;
+            top: 0;
+            height: 60px;
+            width: 52%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+        }
     </style>
 </head>
 
 <body>
     <div id="page" class="hfeed site">
+        <div class="tool-header">Customizer Settings</div>
         <div class="tool">
             <div class="pageinner">
                 <div class="containern">
