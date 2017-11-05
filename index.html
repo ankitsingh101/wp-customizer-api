@@ -186,6 +186,11 @@
         div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
             display: none;
         }
+        
+        .form-group label {
+            min-width: 200px;
+            display: block;
+        }
     </style>
 </head>
 
@@ -212,10 +217,49 @@
                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 bhoechie-tab">
                                         <!-- flight section -->
                                         <div class="bhoechie-tab-content active">
-                                            <div>
-                                                <h1 class="glyphicon glyphicon-plane" style="font-size:14em;color:#55518a"></h1>
-                                                <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                                                <h3 style="margin-top: 0;color:#55518a">Flight Reservation</h3>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body form-horizontal payment-form">
+                                                    <div class="form-group">
+                                                        <label for="concept" class="col-sm-3 control-label">Function Name</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="concept" name="concept">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="description" class="col-sm-3 control-label">Description</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="description" name="description">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="amount" class="col-sm-3 control-label">Amount</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="number" class="form-control" id="amount" name="amount">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="status" class="col-sm-3 control-label">Status</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" id="status" name="status">
+                                                                        <option>Paid</option>
+                                                                        <option>Unpaid</option>
+                                                                    </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="date" class="col-sm-3 control-label">Date</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="date" class="form-control" id="date" name="date">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12 text-right">
+                                                            <button type="button" class="btn btn-default preview-add-button">
+                                                                        <span class="glyphicon glyphicon-plus"></span> Add
+                                                                    </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- train section -->
