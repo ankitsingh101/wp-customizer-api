@@ -208,6 +208,16 @@
             height: 34px;
         }
         
+        input#prioritytextInput {
+            width: 40px;
+            border-radius: 3px;
+            border: 2px solid lightgrey;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 34px;
+        }
+        
         .form-inline {
             margin-bottom: 15px;
             margin-left: -5px;
@@ -317,10 +327,11 @@
                                                     <input type="text" class="form-control" id="panel_id" name="description">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-inline">
                                                 <label for="description" class="col-sm-3 control-label">Priority</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="panel_priority" name="description">
+                                                    <input type="range" class="form-control" id="panel_priority" name="description" onchange="updatepriorityTextInput(this.value);" value='10'>
+                                                    <input type="text" id="prioritytextInput" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -405,9 +416,9 @@
                 $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
                 $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
             });
-            $('#panel-list input[type=text]').change(function() {
+            $('#panel-list input[type=text],#panel-list input[type=range]').change(function() {
                 panel_id = $('#panel_id').val() || "panel-id";
-                panel_priority = $('input#panel_priority').val() || 10;
+                panel_priority = $('#panel_priority').val() || 10;
                 panel_capability = $('input#panel_capability').val() || "edit_theme_options";
                 panel_title = $('input#panel_title').val() || "panel title";
                 panel_description = $('#panel_description').val() || "panel description";
@@ -477,6 +488,10 @@ add_action( 'customize_register', '" + function_name + "' );";
 
         function updateTextInput(val) {
             document.getElementById('textInput').value = val;
+        }
+
+        function updatepriorityTextInput(val) {
+            document.getElementById('prioritytextInput').value = val;
         }
     </script>
 </body>
