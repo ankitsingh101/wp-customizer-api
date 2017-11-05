@@ -334,7 +334,27 @@
                                             </div>
                                         </div>
                                         <div class="bhoechie-tab-content">
-                                            3
+                                            <div class="form-group">
+                                                <label for="settings_id" class="col-sm-3 control-label">ID</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="settings_id" name="description">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="settings_transport" class="col-sm-3 control-label">Transport Method</label>
+                                                <div class="col-sm-9">
+                                                    <select name="" id="settings_transport" class="form-control">
+                                                        <option>refresh</option>
+                                                        <option>postMessage</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="settings_id" class="col-sm-3 control-label">Default Value</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="settings_default" name="description">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="bhoechie-tab-content" id="panel-list">
                                             <div class="form-group">
@@ -473,18 +493,25 @@
                 var sections_priority = $('#section_priority').val() || "10";
                 var sections_description = $('#section_description').val() || "This is a section Desctiption.";
                 var sections_args = "\n\t\tarray(\n\t\t\t'title' => __('" + sections_title + "','" + text_domain + "'), \n\t\t\t'priority' => " + sections_priority + ",\n\t\t\t'capability' => 'edit_theme_options',\n\t\t\t'description' => __('" + sections_description + "','" + text_domain + "'), \n\t\t\t'active_callback ' => '" + settings_active_callback + "'" + section_add_panel + "\n\t\t)";
+                var settings_id = $('#settings_id').val() || "setting_id";
+                var settings_transport = $('#settings_transport').val() || "refresh";
+                var settings_default = $('#settings_default').val() || "";
                 var setiings_code = "function " + function_name + "($wp_customize){\n\
 \t//1. Define a new section (if desired) to the Theme Customizer\n\
 " + add_panel + "\
 \t$wp_customize->add_section(\n\t\t'" + sections_id + "'," + sections_args + "\n\t);\n\
 \t$wp_customize->add_setting(\n\
-\t\t'copyright_textbox',\n\
+\t\t'" + settings_id + "',\n\
 \t\tarray(\n\
-\t\t\t'default' => 'Default copyright text',\n\
+\t\t\t'type' => 'theme_mod',\n\
+\t\t\t'capability' => 'edit_theme_options',\n\
+\t\t\t'transport' => '" + settings_transport + "',\n\
+\t\t\t'sanitize_callback' => '',\n\
+\t\t\t'default' => '" + settings_default + "',\n\
 \t\t)\n\
 \t);\n\
 \t$wp_customize->add_control(\n\
-\t\t'copyright_textbox',\n\
+\t\t'" + settings_id + "',\n\
 \t\tarray(\n\
 \t\t\t'label' => 'Copyright text',\n\
 \t\t\t'section' => '" + sections_id + "',\n\
