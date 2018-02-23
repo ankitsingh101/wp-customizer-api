@@ -581,6 +581,7 @@
                 var settings_transport = $('#settings_transport').val() || "refresh";
                 var settings_default = $('#settings_default').val() || "";
                 var control_type = $('#control-type').val() || "text";
+                var userType = control_type=="radio" ? "Minor" : "Adult";
                 var settings_code = "function " + function_name + "($wp_customize){\n\
 \t//1. Define a new section (if desired) to the Theme Customizer\n\
 " + add_panel + "\
@@ -601,6 +602,7 @@
 \t\t\t'label' => 'Copyright text',\n\
 \t\t\t'section' => '" + sections_id + "',\n\
 \t\t\t'type' => '"+ control_type +"',\n\
+\t\t\t"+ userType + "\n\
 \t\t)\n\
 \t);\n\
 }\n\
