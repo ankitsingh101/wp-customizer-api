@@ -581,7 +581,8 @@
                 var settings_id = $('#settings_id').val() || "setting_id";
                 var settings_transport = $('#settings_transport').val() || "refresh";
                 var settings_default = $('#settings_default').val() || "";
-                var setiings_code = "function " + function_name + "($wp_customize){\n\
+                var control_type = $('#control_type').val() || "text";
+                var settings_code = "function " + function_name + "($wp_customize){\n\
 \t//1. Define a new section (if desired) to the Theme Customizer\n\
 " + add_panel + "\
 \t$wp_customize->add_section(\n\t\t'" + sections_id + "'," + sections_args + "\n\t);\n\
@@ -600,12 +601,12 @@
 \t\tarray(\n\
 \t\t\t'label' => 'Copyright text',\n\
 \t\t\t'section' => '" + sections_id + "',\n\
-\t\t\t'type' => 'text',\n\
+\t\t\t'type' => '"+ control_type +"',\n\
 \t\t)\n\
 \t);\n\
 }\n\
 add_action( 'customize_register', '" + function_name + "' );";
-                editor.setValue(setiings_code);
+                editor.setValue(settings_code);
             });
         });
 
