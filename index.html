@@ -581,7 +581,7 @@
                 var settings_transport = $('#settings_transport').val() || "refresh";
                 var settings_default = $('#settings_default').val() || "";
                 var control_type = $('#control-type').val() || "text";
-                var userType = control_type=="radio" ? "'choices'=> array(\n\t\t\t\t\t'dark'=> __( 'Dark' ),\n\t\t\t\t\t'light'  => __( 'Light' )\n\t\t\t)" : "";
+                var userType = (control_type=="radio" || control_type=="select") ? "'choices'=> array(\n\t\t\t\t\t'dark'=> __( 'Dark' ),\n\t\t\t\t\t'light'  => __( 'Light' )\n\t\t\t)" : "";
                 var settings_code = "function " + function_name + "($wp_customize){\n\
 \t//1. Define a new section (if desired) to the Theme Customizer\n\
 " + add_panel + "\
