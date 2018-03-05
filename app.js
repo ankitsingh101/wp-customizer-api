@@ -6,3 +6,4 @@ class Sidetabs extends React.Component {
       );
   }
 }
+export default Sidetabs;
