@@ -32,3 +32,4 @@ let modals = (
   //</div>
 );
 ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
+ 
