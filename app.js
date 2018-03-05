@@ -11,4 +11,4 @@ class Sidetabs extends React.Component {
     );
   }
 }
-ReactDOM.render(<Sidetabs />, document.getElementsByClassName('list-group'));
+ReactDOM.render(<Sidetabs />, document.getElementsByClassName('list-group')[0]);
