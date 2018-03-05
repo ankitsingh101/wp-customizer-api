@@ -11,7 +11,7 @@
 let modals = (
   <div className="list-group">
         <a href="#" className="list-group-item text-center active">
-            <div><h4 className="fa fa-globe" aria-hidden="true"></h4><br/>Global</div>
+            <h4 className="fa fa-globe" aria-hidden="true"></h4><br/>Global
         </a>
         <a href="#" className="list-group-item text-center">
             <div><h4 className="fa fa-archive" aria-hidden="true"></h4><br/>Sections</div>
