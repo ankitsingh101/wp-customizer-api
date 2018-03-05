@@ -1,5 +1,5 @@
 
-class Sidetabs extends React.Component {
+/*class Sidetabs extends React.Component {
   render() {
     return(
       <a href="#" className="list-group-item text-center">
@@ -7,9 +7,9 @@ class Sidetabs extends React.Component {
       </a>
     );
   }
-}
+}*/
 let modals = (
-  <div class="list-group">
+  <div className="list-group">
         <a href="#" className="list-group-item text-center">
             <h4 className="fa fa-globe" aria-hidden="true"></h4><br>Global
         </a>
