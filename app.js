@@ -2,7 +2,7 @@
 class Sidetabs extends React.Component {
   render() {
     return(
-      <a href="#" className="list-group-item active text-center">
+      <a href="#" className="list-group-item text-center">
        <div><h4 className={"fa fa-" + this.props.class} aria-hidden="true"></h4><br/>{this.props.title}</div>
       </a>
     );
