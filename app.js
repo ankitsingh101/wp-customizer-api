@@ -10,7 +10,7 @@
 }*/
 let modals = (
   <div className="list-group">
-        <a href="#" className="list-group-item text-center">
+        <a href="#" className="list-group-item text-center active">
             <div><h4 className="fa fa-globe" aria-hidden="true"></h4><br/>Global</div>
         </a>
         <a href="#" className="list-group-item text-center">
@@ -19,7 +19,7 @@ let modals = (
         <a href="#" className="list-group-item text-center">
             <div><h4 className="fa fa-cogs"></h4><br/>Settings</div>
         </a>
-        <a href="#" id="panel-list" className="list-group-item text-center" styles={{display : 'none'}}>
+        <a href="#" id="panel-list" className="list-group-item text-center" style={{display : 'none'}}>
              <div><h4 className="fa fa-columns"></h4><br/>Panel</div>
         </a>
         <a href="#" id="control-list" className="list-group-item text-center">
