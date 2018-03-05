@@ -8,4 +8,4 @@ class Sidetabs extends React.Component {
     );
   }
 }
-//ReactDOM.render(<Sidetabs title="Global" class="global"/>, document.getElementsByClassName('list-group')[0]);
+ReactDOM.render(<Sidetabs title="globe" class="global"/>, document.getElementsByClassName('list-group')[0]);
