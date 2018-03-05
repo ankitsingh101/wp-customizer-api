@@ -9,9 +9,9 @@ class Sidetabs extends React.Component {
   }
 }
 let modals = (
-  <div>
+  <div className="list-group">
     <Sidetabs title="Globel" class="globe"/>
     <Sidetabs title="Sections" class="archive"/>
   </div>
 );
-ReactDOM.render(modals, document.getElementsByClassName('list-group')[0]);
+ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
