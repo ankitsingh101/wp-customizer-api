@@ -14,4 +14,4 @@ let modals = (
     <Sidetabs title="Sections" class="archive"/>
   </div>
 );
-ReactDOM.render(<Sidetabs title="Globel" class="globe"/>, document.getElementsByClassName('list-group')[0]);
+ReactDOM.render(modals, document.getElementsByClassName('list-group')[0]);
