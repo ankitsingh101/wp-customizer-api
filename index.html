@@ -196,7 +196,7 @@
     class Sidetabs extends React.Component {
   render() {
     return(
-      <a href="#" className="list-group-item text-center" style={{display: this.props.title === "Panel" ? 'none' : '' }}>
+      <a href="#" className="list-group-item text-center">
        <div><h4 className={"fa fa-" + this.props.class} aria-hidden="true"></h4><br/>{this.props.title}</div>
       </a>
     );
@@ -207,7 +207,7 @@ let modals = (
         <Sidetabs title="Globel" class="globe"/>
         <Sidetabs title="Sections" class="archive"/>
         <Sidetabs title="Settings" class="cogs"/>
-        <Sidetabs title="Panel" class="columns"/>
+        <Sidetabs title="Panel" class="columns" style={{display: this.props.title==="Panel" ? 'block' : 'none' }}/>
         <Sidetabs title="Control" class="columns"/>
   </div>
 );
