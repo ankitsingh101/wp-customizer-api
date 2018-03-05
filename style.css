@@ -258,6 +258,9 @@
             align-items: center;
             font-size: 22px;
         }
+a.list-group-item.text-center div {
+    margin: 0 auto;
+}
         @media (max-width:780px)
         {
             .tool-header {
