@@ -11,8 +11,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
-    <link rel="stylesheet" href="style.css" >
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script> 
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
     <title>Wp Customizer API</title>
 </head>
 
@@ -189,10 +189,47 @@
         editor.getSession().selection.clearSelection();
         editor.getSession().setUseWrapMode(true);
     </script>
-    <script type="text/babel" src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script type="text/babel">
+
+/*class Sidetabs extends React.Component {
+  render() {
+    return(
+      <a href="#" className="list-group-item text-center">
+       <div><h4 className={"fa fa-" + this.props.class} aria-hidden="true"></h4><br/>{this.props.title}</div>
+      </a>
+    );
+  }
+}*/
+let modals = (
+  <div className="list-group">
+        <a href="#" className="list-group-item text-center">
+            <h4 className="fa fa-globe" aria-hidden="true"></h4><br/>Global
+        </a>
+        <a href="#" className="list-group-item text-center">
+            <h4 className="fa fa-archive" aria-hidden="true"></h4><br/>Sections
+        </a>
+        <a href="#" className="list-group-item text-center">
+            <div><h4 className="fa fa-cogs"></h4><br/>Settings</div>
+        </a>
+        <a href="#" id="panel-list" className="list-group-item text-center" style={{display : 'none'}}>
+             <h4 className="fa fa-columns"></h4><br/>Panel
+        </a>
+        <a href="#" id="control-list" className="list-group-item text-center">
+            <h4 className="fa fa-columns"></h4><br/>Control
+        </a>
+    </div>
+  //<div className="list-group">
+    //<Sidetabs title="Globel" class="globe"/>
+    //<Sidetabs title="Sections" class="archive"/>
+  //</div>
+);
+ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
+ 
+
+    </script>
     <script>
         $(document).ready(function() {
             function chech_panel() {
@@ -267,7 +304,7 @@
                 var settings_transport = $('#settings_transport').val() || "refresh";
                 var settings_default = $('#settings_default').val() || "";
                 var control_type = $('#control-type').val() || "text";
-                var userType = (control_type=="radio" || control_type=="select") ? "'choices'=> array(\n\t\t\t\t\t'dark'=> __( 'Dark' ),\n\t\t\t\t\t'light'  => __( 'Light' )\n\t\t\t)" : "";
+                var userType = (control_type == "radio" || control_type == "select") ? "'choices'=> array(\n\t\t\t\t\t'dark'=> __( 'Dark' ),\n\t\t\t\t\t'light'  => __( 'Light' )\n\t\t\t)" : "";
                 var settings_code = "function " + function_name + "($wp_customize){\n\
 \t//1. Define a new section (if desired) to the Theme Customizer\n\
 " + add_panel + "\
@@ -287,8 +324,8 @@
 \t\tarray(\n\
 \t\t\t'label' => 'Copyright text',\n\
 \t\t\t'section' => '" + sections_id + "',\n\
-\t\t\t'type' => '"+ control_type +"',\n\
-\t\t\t"+ userType + "\n\
+\t\t\t'type' => '" + control_type + "',\n\
+\t\t\t" + userType + "\n\
 \t\t)\n\
 \t);\n\
 }\n\
