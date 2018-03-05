@@ -22,7 +22,7 @@ let modals = (
         <a href="#" id="panel-list" class="list-group-item text-center" style="display: none;">
              <div><h4 className="fa fa-columns"></h4><br/>Panel</div>
         </a>
-        <a href="#" id="control-list" class="list-group-item text-center active">
+        <a href="#" id="control-list" class="list-group-item text-center">
             <div><h4 className="fa fa-columns"></h4><br/>Control</div>
         </a>
     </div>
