@@ -8,4 +8,10 @@ class Sidetabs extends React.Component {
     );
   }
 }
+let modals = (
+  <div>
+    <Sidetabs title="Globel" class="globe"/>
+    <Sidetabs title="Sections" class="archive"/>
+  </div>
+);
 ReactDOM.render(<Sidetabs title="Globel" class="globe"/>, document.getElementsByClassName('list-group')[0]);
