@@ -11,19 +11,19 @@
 let modals = (
   <div className="list-group">
         <a href="#" className="list-group-item text-center">
-            <h4 className="fa fa-globe" aria-hidden="true"></h4><br>Global
+            <div><h4 className="fa fa-globe" aria-hidden="true"></h4><br>Global</div>
         </a>
         <a href="#" className="list-group-item text-center">
-            <h4 className="fa fa-archive" aria-hidden="true"></h4><br>Sections
+            <div><h4 className="fa fa-archive" aria-hidden="true"></h4><br>Sections</div>
         </a>
         <a href="#" class="list-group-item text-center">
-            <h4 className="fa fa-cogs"></h4><br>Settings
+            <div><h4 className="fa fa-cogs"></h4><br>Settings
         </a>
         <a href="#" id="panel-list" class="list-group-item text-center" style="display: none;">
-            <h4 className="fa fa-columns"></h4><br>Panel
+            <div><h4 className="fa fa-columns"></h4><br>Panel</div>
         </a>
         <a href="#" id="control-list" class="list-group-item text-center active">
-            <h4 className="fa fa-columns"></h4><br>Control
+            <div><h4 className="fa fa-columns"></h4><br>Control</div>
         </a>
     </div>
   //<div className="list-group">
