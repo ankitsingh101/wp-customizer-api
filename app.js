@@ -1,4 +1,4 @@
-import React from 'react';
+
 class Sidetabs extends React.Component {
  render(){
   return (
@@ -6,4 +6,4 @@ class Sidetabs extends React.Component {
       );
   }
 }
-export default Sidetabs;
+ReactDOM.render(<Sidetabs />, document.getElementsByClassName('list-group'));
