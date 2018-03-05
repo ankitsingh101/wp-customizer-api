@@ -9,9 +9,26 @@ class Sidetabs extends React.Component {
   }
 }
 let modals = (
-  <div className="list-group">
-    <Sidetabs title="Globel" class="globe"/>
-    <Sidetabs title="Sections" class="archive"/>
-  </div>
+  <div class="list-group">
+        <a href="#" className="list-group-item text-center">
+            <h4 className="fa fa-globe" aria-hidden="true"></h4><br>Global
+        </a>
+        <a href="#" className="list-group-item text-center">
+            <h4 className="fa fa-archive" aria-hidden="true"></h4><br>Sections
+        </a>
+        <a href="#" class="list-group-item text-center">
+            <h4 className="fa fa-cogs"></h4><br>Settings
+        </a>
+        <a href="#" id="panel-list" class="list-group-item text-center" style="display: none;">
+            <h4 className="fa fa-columns"></h4><br>Panel
+        </a>
+        <a href="#" id="control-list" class="list-group-item text-center active">
+            <h4 className="fa fa-columns"></h4><br>Control
+        </a>
+    </div>
+  //<div className="list-group">
+    //<Sidetabs title="Globel" class="globe"/>
+    //<Sidetabs title="Sections" class="archive"/>
+  //</div>
 );
-//ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
+ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
