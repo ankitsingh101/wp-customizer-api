@@ -31,5 +31,5 @@ let modals = (
     //<Sidetabs title="Sections" class="archive"/>
   //</div>
 );
-//ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
+ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
  
