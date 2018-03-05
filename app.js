@@ -16,13 +16,13 @@ let modals = (
         <a href="#" className="list-group-item text-center">
             <div><h4 className="fa fa-archive" aria-hidden="true"></h4><br/>Sections</div>
         </a>
-        <a href="#" class="list-group-item text-center">
+        <a href="#" className="list-group-item text-center">
             <div><h4 className="fa fa-cogs"></h4><br/>Settings</div>
         </a>
-        <a href="#" id="panel-list" class="list-group-item text-center" style="display: none;">
+        <a href="#" id="panel-list" className="list-group-item text-center" style="display: none;">
              <div><h4 className="fa fa-columns"></h4><br/>Panel</div>
         </a>
-        <a href="#" id="control-list" class="list-group-item text-center">
+        <a href="#" id="control-list" className="list-group-item text-center">
             <div><h4 className="fa fa-columns"></h4><br/>Control</div>
         </a>
     </div>
