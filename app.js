@@ -30,7 +30,6 @@ let modals = (
     //<Sidetabs title="Globel" class="globe"/>
     //<Sidetabs title="Sections" class="archive"/>
   //</div>
-  <a>hjbhjbhj</a>
 );
-ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
+//ReactDOM.render(modals, document.getElementsByClassName('bhoechie-tab-menu')[0]);
  
