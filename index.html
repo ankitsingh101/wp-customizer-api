@@ -174,52 +174,7 @@
             <div id="editor"></div>
         </div>
     </div>
-    <!--<script src="assets/js/app.js"></script>-->
-    <script type="text/babel">
-        class Sidetabs extends React.Component {
-    constructor(props){
-        super(props);
-       this.props={
-           Data: [
-            {
-                title:"Globel",
-                class:"globe"
-            },
-           {
-               title:"Sections",
-               class:"archive"
-            },
-           {
-               title:"Settings",
-               class:"cogs"
-            },
-            {
-               title:"Panel",
-               class:"columns"
-            },
-           {
-               title:"Control",
-               class:"columns"
-            },
-       ]
-    }
-    }
-    render() {
-      return(
-        <div className="list-group">
-        {
-                this.props.Data.map((item, index) => (
-                    <a href="#" className="list-group-item text-center" style={{display: item.title==="Panel" ? 'none' : '' }} id={item.title==="Panel"? 'panel-list':''}>
-                        <div><h4 className={"fa fa-" + item.class} aria-hidden="true"></h4><br/>{item.title}</div>
-                    </a>
-                ))
-        }
-        </div>
-      );
-    }
-  }
-  ReactDOM.render(<Sidetabs/>, document.getElementsByClassName('bhoechie-tab-menu')[0]);
-    </script>
+    <script src="assets/js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
